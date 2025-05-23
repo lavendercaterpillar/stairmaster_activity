@@ -20,11 +20,29 @@
 # 1. 1 step + 1 step + 1 step
 # 2. 1 step + 2 steps
 # 3. 2 steps + 1 step
- 
-def climb_stairs(n):
-    pass
+
+
+# basicalli it is Fibonacci series:
+
+def climbStairs(n, memo = None):
+        
+        if n == 0 or n == 1:
+            return 1
+
+        memo = memo if memo is not None else {} 
+
+        if n in memo:
+            return memo[n]
+        
+        memo[n] = climbStairs(n-1, memo) + climbStairs(n-2, memo)
+        
+        return memo[n]
+
 
     # at each step, how many choices do we have?
     # given each choice, how many combinations of steps are left?
     # is there a threshold below which we have only a limited number of combinations?
     # what threshold, and how many combinations?
+
+
+print(climbStairs(30))
